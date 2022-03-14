@@ -11,7 +11,7 @@ cd ios && pod install
 npx react-native run-ios
 ```
 
-### Prower
+### Power
 
 - react native
 - supabase
