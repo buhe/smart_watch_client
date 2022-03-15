@@ -17,6 +17,10 @@ npx react-native run-ios
 ### Progress
 - [x] Tab nav
 - [ ] connect supadase
+### Screenshot
+
+![IMG_1720](https://tva1.sinaimg.cn/large/e6c9d24egy1h0asf9d3mej20u01sx3zz.jpg)
+
 ### Power by
 
 - react native
