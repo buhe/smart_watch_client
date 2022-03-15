@@ -14,6 +14,9 @@ npx react-native run-ios
 ### Design
 - https://www.figma.com/file/3OLnOyZQxGDeQv9XK1w5Bs/Watch?node-id=0%3A1
 
+### Progress
+- [ ] Tab nav
+- [ ] connect supadase
 ### Power by
 
 - react native
