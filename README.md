@@ -11,7 +11,10 @@ cd ios && pod install
 npx react-native run-ios
 ```
 
-### Power
+### Design
+- https://www.figma.com/file/3OLnOyZQxGDeQv9XK1w5Bs/Watch?node-id=0%3A1
+
+### Power by
 
 - react native
 - supabase

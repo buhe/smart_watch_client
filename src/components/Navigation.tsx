@@ -4,14 +4,14 @@ import {
   DefaultTheme,
   NavigationContainer,
 } from '@react-navigation/native';
-import HomeStack from '../features/home';
-import AuthStack from '../features/auth';
-import {useAuth} from '../features/auth/AuthContext';
+import TabNav from '../features/switch';
+// import AuthStack from '../features/auth';
+// import {useAuth} from '../features/auth/AuthContext';
 import {Linking} from 'react-native';
 import {useColorMode} from 'native-base';
 
 export default function Navigation() {
-  const {authStatus} = useAuth();
+  // const {authStatus} = useAuth();
   const darkMode = useColorMode().colorMode === 'dark';
 
   const linking = {
@@ -43,7 +43,8 @@ export default function Navigation() {
     <NavigationContainer
       theme={darkMode ? DarkTheme : DefaultTheme}
       linking={linking}>
-      {authStatus === 'SIGNED_IN' ? <HomeStack /> : <AuthStack />}
+        <TabNav />
+      {/* {authStatus === 'SIGNED_IN' ? <HomeStack /> : <AuthStack />} */}
     </NavigationContainer>
   );
 }
