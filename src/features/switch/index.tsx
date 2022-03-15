@@ -1,31 +1,36 @@
 import * as React from 'react';
-import { Text, View } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { useState } from 'react';
+import { Switch, Text, View } from 'react-native';
 
-function HomeScreen() {
+export default function SwitchScreen() {
+
+    const [isEnabled, setIsEnabled] = useState(false);
+    const toggleSwitch = () => setIsEnabled(previousState => !previousState);
+
     return (
-        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-            <Text>Home!</Text>
+        <View style={{ flex: 1 }}>
+            <View style={{ flexDirection: 'row',padding: 22 }}>
+                <Text style={{ fontSize:24, width: 122}}>Cat Play</Text>
+                <Switch
+                    trackColor={{ false: "#767577", true: "#81b0ff" }}
+                    thumbColor={isEnabled ? "#f5dd4b" : "#f4f3f4"}
+                    ios_backgroundColor="#3e3e3e"
+                    onValueChange={toggleSwitch}
+                    value={isEnabled}
+                />
+            </View>
+            <View style={{ flexDirection: 'row', padding: 22 }}>
+                <Text style={{ fontSize: 24, width: 122 }}>Distance</Text>
+                <Switch
+                    trackColor={{ false: "#767577", true: "#81b0ff" }}
+                    thumbColor={isEnabled ? "#f5dd4b" : "#f4f3f4"}
+                    ios_backgroundColor="#3e3e3e"
+                    onValueChange={toggleSwitch}
+                    value={isEnabled}
+                />
+            </View>
         </View>
     );
 }
 
-function SettingsScreen() {
-    return (
-        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-            <Text>Settings!</Text>
-        </View>
-    );
-}
 
-const Tab = createBottomTabNavigator();
-
-export default function TabNav() {
-    return (
-        <Tab.Navigator>
-            <Tab.Screen name="Home" component={HomeScreen} />
-            <Tab.Screen name="Settings" component={SettingsScreen} />
-        </Tab.Navigator>
-    );
-}

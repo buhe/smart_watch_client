@@ -4,9 +4,9 @@ import {
   DefaultTheme,
   NavigationContainer,
 } from '@react-navigation/native';
-import TabNav from '../features/switch';
-// import AuthStack from '../features/auth';
-// import {useAuth} from '../features/auth/AuthContext';
+import SwitchScreen from '../features/switch';
+import SettingsScreen from '../features/settings';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import {Linking} from 'react-native';
 import {useColorMode} from 'native-base';
 
@@ -38,13 +38,15 @@ export default function Navigation() {
       });
     },
   };
-
+  const Tab = createBottomTabNavigator();
   return (
     <NavigationContainer
       theme={darkMode ? DarkTheme : DefaultTheme}
       linking={linking}>
-        <TabNav />
-      {/* {authStatus === 'SIGNED_IN' ? <HomeStack /> : <AuthStack />} */}
+      <Tab.Navigator>
+        <Tab.Screen name="Switch" component={SwitchScreen} />
+        <Tab.Screen name="Settings" component={SettingsScreen} />
+      </Tab.Navigator>
     </NavigationContainer>
   );
 }
