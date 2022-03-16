@@ -4,8 +4,8 @@ import { Switch, Text, View } from 'react-native';
 
 export default function SwitchScreen() {
 
-    const [isEnabled, setIsEnabled] = useState(false);
-    const toggleSwitch = () => setIsEnabled(previousState => !previousState);
+    const [isCatEnabled, setIsCatEnabled] = useState(false);
+    const [isDistanceEnabled, setIsDistanceEnabled] = useState(false);
 
     return (
         <View style={{ flex: 1 }}>
@@ -13,20 +13,26 @@ export default function SwitchScreen() {
                 <Text style={{ fontSize:24, width: 122}}>Cat Play</Text>
                 <Switch
                     trackColor={{ false: "#767577", true: "#81b0ff" }}
-                    thumbColor={isEnabled ? "#f5dd4b" : "#f4f3f4"}
+                    thumbColor={isCatEnabled ? "#f5dd4b" : "#f4f3f4"}
                     ios_backgroundColor="#3e3e3e"
-                    onValueChange={toggleSwitch}
-                    value={isEnabled}
+                    onValueChange={() => {
+                        setIsCatEnabled(previousState => !previousState);
+
+                    }}
+                    value={isCatEnabled}
                 />
             </View>
             <View style={{ flexDirection: 'row', padding: 22 }}>
                 <Text style={{ fontSize: 24, width: 122 }}>Distance</Text>
                 <Switch
                     trackColor={{ false: "#767577", true: "#81b0ff" }}
-                    thumbColor={isEnabled ? "#f5dd4b" : "#f4f3f4"}
+                    thumbColor={isDistanceEnabled ? "#f5dd4b" : "#f4f3f4"}
                     ios_backgroundColor="#3e3e3e"
-                    onValueChange={toggleSwitch}
-                    value={isEnabled}
+                    onValueChange={() => {
+                        setIsDistanceEnabled(previousState => !previousState);
+                        
+                     }}
+                    value={isDistanceEnabled}
                 />
             </View>
         </View>
