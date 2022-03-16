@@ -19,9 +19,9 @@ export default function SwitchScreen() {
                     trackColor={{ false: "#767577", true: "#81b0ff" }}
                     thumbColor={isCatEnabled ? "#f5dd4b" : "#f4f3f4"}
                     ios_backgroundColor="#3e3e3e"
-                    onValueChange={async () => {
+                    onValueChange={async (value) => {
                         setIsCatEnabled(previousState => !previousState);
-                        await supabase.from<Onoff>('onoff').update({ 'en': isCatEnabled ? 1 : 0}).match({'id': 1});
+                        await supabase.from<Onoff>('onoff').update({ 'en': value ? 1 : 0}).match({'id': 1});
                     }}
                     value={isCatEnabled}
                 />
@@ -32,9 +32,9 @@ export default function SwitchScreen() {
                     trackColor={{ false: "#767577", true: "#81b0ff" }}
                     thumbColor={isDistanceEnabled ? "#f5dd4b" : "#f4f3f4"}
                     ios_backgroundColor="#3e3e3e"
-                    onValueChange={() => {
+                    onValueChange={async (value) => {
                         setIsDistanceEnabled(previousState => !previousState);
-
+                        await supabase.from<Onoff>('onoff').update({ 'en': value ? 1 : 0 }).match({ 'id': 2 });
                      }}
                     value={isDistanceEnabled}
                 />
