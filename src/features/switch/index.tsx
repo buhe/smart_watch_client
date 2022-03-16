@@ -20,7 +20,7 @@ export default function SwitchScreen() {
                     ios_backgroundColor="#3e3e3e"
                     onValueChange={async () => {
                         setIsCatEnabled(previousState => !previousState);
-                        await supabase.from<Onoff>('onoff').upsert({'id':1, 'en': 0});
+                        await supabase.from<Onoff>('onoff').update({'en': 1}).match({'id': 1});
                     }}
                     value={isCatEnabled}
                 />
