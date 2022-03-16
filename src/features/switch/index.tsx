@@ -6,7 +6,8 @@ import supabase from '../../services/supabase';
 import { Onoff } from '../../types/Profile';
 
 export default function SwitchScreen() {
-
+    // let defaultIsCatEn: boolean = await (await supabase.from<Onoff>('onoff').select('en').eq('id', 1)).data![0].en == 1;
+    // console.log("defaultIsCatEn " + defaultIsCatEn);
     const [isCatEnabled, setIsCatEnabled] = useState(false);
     const [isDistanceEnabled, setIsDistanceEnabled] = useState(false);
 
@@ -20,7 +21,7 @@ export default function SwitchScreen() {
                     ios_backgroundColor="#3e3e3e"
                     onValueChange={async () => {
                         setIsCatEnabled(previousState => !previousState);
-                        await supabase.from<Onoff>('onoff').update({'en': 1}).match({'id': 1});
+                        await supabase.from<Onoff>('onoff').update({ 'en': isCatEnabled ? 1 : 0}).match({'id': 1});
                     }}
                     value={isCatEnabled}
                 />
