@@ -2,6 +2,9 @@ import * as React from 'react';
 import { useState } from 'react';
 import { Switch, Text, View } from 'react-native';
 
+import supabase from '../../services/supabase';
+import { Onoff } from '../../types/Profile';
+
 export default function SwitchScreen() {
 
     const [isCatEnabled, setIsCatEnabled] = useState(false);
@@ -15,9 +18,9 @@ export default function SwitchScreen() {
                     trackColor={{ false: "#767577", true: "#81b0ff" }}
                     thumbColor={isCatEnabled ? "#f5dd4b" : "#f4f3f4"}
                     ios_backgroundColor="#3e3e3e"
-                    onValueChange={() => {
+                    onValueChange={async () => {
                         setIsCatEnabled(previousState => !previousState);
-
+                        await supabase.from<Onoff>('onoff').upsert({'id':1, 'en': 0});
                     }}
                     value={isCatEnabled}
                 />
@@ -30,7 +33,7 @@ export default function SwitchScreen() {
                     ios_backgroundColor="#3e3e3e"
                     onValueChange={() => {
                         setIsDistanceEnabled(previousState => !previousState);
-                        
+
                      }}
                     value={isDistanceEnabled}
                 />
